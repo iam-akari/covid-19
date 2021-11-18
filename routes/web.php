@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 //投稿一覧を表示
 Route::get('/','App\Http\Controllers\UpostController@showList')->name
 ('Uposts');
+//詳細画面を表示
+Route::get('/user_post/{id}','App\Http\Controllers\UpostController@showDetail')->name
+('show');
