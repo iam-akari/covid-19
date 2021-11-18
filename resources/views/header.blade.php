@@ -5,8 +5,8 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">投稿一覧 <span class="sr-only"></span></a>
-      <a class="nav-item nav-link" href="#">投稿</a>
+      <a class="nav-item nav-link active" href="{{ route('Uposts') }}">投稿一覧 <span class="sr-only"></span></a>
+      <a class="nav-item nav-link" href="{{ route('create') }}">投稿</a>
     </div>
   </div>
 </nav>

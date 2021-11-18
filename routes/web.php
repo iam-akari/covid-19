@@ -14,8 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 //投稿一覧を表示
-Route::get('/','App\Http\Controllers\UpostController@showList')->name
-('Uposts');
+Route::get('/','App\Http\Controllers\UpostController@showList')
+->name('Uposts');
+
+//投稿画面を表示
+Route::get('/user_post/create','App\Http\Controllers\UpostController@showCrete')
+->name('create');
+
+//サイト投稿
+Route::post('/user_post/store','App\Http\Controllers\UpostController@exeStore')
+->name('store');
+
+
 //詳細画面を表示
-Route::get('/user_post/{id}','App\Http\Controllers\UpostController@showDetail')->name
-('show');
+Route::get('/user_post/{id}','App\Http\Controllers\UpostController@showDetail')
+->name('show');
