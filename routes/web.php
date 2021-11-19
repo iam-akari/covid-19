@@ -29,3 +29,11 @@ Route::post('/user_post/store','App\Http\Controllers\UpostController@exeStore')
 //詳細画面を表示
 Route::get('/user_post/{id}','App\Http\Controllers\UpostController@showDetail')
 ->name('show');
+
+//編集画面を表示
+Route::get('/user_post/edit/{id}','App\Http\Controllers\UpostController@showEdit')
+->name('edit');
+
+//サイト編集
+Route::post('/user_post/update','App\Http\Controllers\UpostController@exeUpdate')
+->name('update');

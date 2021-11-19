@@ -46,19 +46,60 @@ class UpostController extends Controller
     *  @return view
     */
     public function exeStore(PostRequest $request) {
-      //ブログのデータを受け取る
+      //投稿データを受け取る
       $inputs = $request->all();
       \DB::beginTransaction();
 
       try {
-        //ブログを登録
+        //投稿する
         User_posts::create($inputs);
         \DB::commit();
       } catch(\Throwable $e) {
           \DB::rollback();
           abort(500);
       }
-      \Session::flash('err_msg','ブログを登録しました。');
+      \Session::flash('err_msg','投稿しました。');
+      return redirect(route('Uposts'));
+    }
+
+    /** 編集フォームを表示する
+    *  @param int $id
+    *  @return view
+    */
+    public function showEdit($id)
+    {
+        $user_posts = User_posts::find($id);
+
+        if (is_null($user_posts)) {
+          \Session::flash('err_msg','データがありません。');
+          return redirect(route('Uposts'));
+        }
+
+        return view('post.edit',
+        ['user_posts'=>$user_posts]);
+    }
+
+    /** サイトを更新する
+    *  @return view
+    */
+    public function exeUpdate(PostRequest $request) {
+      //更新データを受け取る
+      $inputs = $request->all();
+      \DB::beginTransaction();
+
+      try {
+        //更新する
+        $user_posts = User_posts::find($inputs['id']);
+        $user_posts->fill([
+          'content' => $inputs['content'],
+        ]);
+        $user_posts->save();
+        \DB::commit();
+      } catch(\Throwable $e) {
+          \DB::rollback();
+          abort(500);
+      }
+      \Session::flash('err_msg','更新しました。');
       return redirect(route('Uposts'));
     }
 

@@ -7,7 +7,7 @@
   <h2>投稿一覧</h2>
   @if (session('err_msg'))
     <p class="text-danger">{{ session('err_msg') }}</p>
-  @endif  
+  @endif
   <table class="table table-striped">
       <tr>
           <th>記事番号</th>
@@ -20,7 +20,8 @@
           <td>{{ $user_post->id }}</td>
           <td>{{ $user_post->created_at }}</td>
           <td>{{ $user_post->content }}</td>
-          <td><a href="/user_post/{{ $user_post->id }}">詳細</a></td>
+          <td><button type="button" class="btn btn-primary" onclick="location.href='/user_post/{{ $user_post->id }}'">詳細</button></td>
+          <td><button type="button" class="btn btn-primary" onclick="location.href='/user_post/edit/{{ $user_post->id }}'">編集</button></td>
       </tr>
       @endforeach
   </table>
