@@ -37,3 +37,7 @@ Route::get('/user_post/edit/{id}','App\Http\Controllers\UpostController@showEdit
 //サイト編集
 Route::post('/user_post/update','App\Http\Controllers\UpostController@exeUpdate')
 ->name('update');
+
+//サイト削除
+Route::post('/user_post/delete/{id}','App\Http\Controllers\UpostController@exeDelete')
+->name('delete');

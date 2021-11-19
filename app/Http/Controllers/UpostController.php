@@ -103,4 +103,27 @@ class UpostController extends Controller
       return redirect(route('Uposts'));
     }
 
+    /** ブログ削除
+    *  @param int $id
+    *  @return view
+    */
+    public function exeDelete($id)
+    {
+
+      if (empty($id)) {
+        \Session::flash('err_msg','データがありません。');
+        return redirect(route('Uposts'));
+      }
+
+      try {
+        //削除する
+        User_posts::destroy($id);
+      } catch(\Throwable $e) {
+          abort(500);
+      }
+
+      \Session::flash('err_msg','削除しました。');
+      return redirect(route('Uposts'));
+    }
+
 }
