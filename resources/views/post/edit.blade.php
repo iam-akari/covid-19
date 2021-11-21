@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title', '投稿編集')
 @section('content')
+<p>git commit --amend</p>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h2>副反応投稿編集フォーム</h2>
